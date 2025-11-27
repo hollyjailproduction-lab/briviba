@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PakaianController;
+use App\Http\Controllers\Admin\StockController;
+use App\Http\Controllers\Admin\HistoryController;
 
 Route::get('/auth/google', [GoogleController::class, 'redirect'])->name('login.google');
 Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
@@ -34,6 +39,38 @@ Route::get('/user-register', function () {
 
 Route::post('/user-login', [LoginController::class, 'login'])->name('login');
 Route::post('/user-register', [RegisterController::class, 'register'])->name('register');
+
+/**
+ * route for admin
+ */
+
+
+//group route with prefix "admin"
+Route::prefix('admin')->group(function () {
+
+
+    //group route with middleware "auth"
+    Route::group(['middleware' => 'auth'], function() {
+
+
+        //route dashboard
+        Route::get('/dashboard', [DashboardController::class, 'index'])
+            ->name('admin.dashboard.index');
+
+        //route resource categories
+        Route::resource('/category', CategoryController::class,['as' => 'admin']);
+
+
+        Route::resource('pakaian', PakaianController::class,['as' => 'admin']);
+        
+        Route::resource('stock', StockController::class,['as' => 'admin']);
+        Route::get('stock/{id}/add-stock', [StockController::class, 'addStockForm'])->name('admin.stock.addStockForm');
+        Route::post('stock/{id}/add-stock', [StockController::class, 'addStock'])->name('admin.stock.addStock');
+
+        Route::resource('history', HistoryController::class, ['as' => 'admin']);
+
+    });
+});
 
 
 require __DIR__.'/auth.php';

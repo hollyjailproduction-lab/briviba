@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('pakaian_id')->constrained('pakaians')->onDelete('cascade');
-            $table->foreignId('variant_id')->constrained('product_variants')->onDelete('cascade');
+            $table->foreignId('stock_id')->constrained('stocks')->onDelete('cascade'); // size, price
             $table->integer('quantity');
             $table->bigInteger('total_price');
             $table->timestamps();
