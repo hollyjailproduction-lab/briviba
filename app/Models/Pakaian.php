@@ -42,10 +42,12 @@ class Pakaian extends Model
         return $this->hasMany(Stock::class);
     }
 
-            protected function image(): Attribute
+    protected function image(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => asset('/storage/categories/' . $value),
+            get: fn ($value) => asset('storage/pakaian/' . $value),
         );
     }
+
+
 }
