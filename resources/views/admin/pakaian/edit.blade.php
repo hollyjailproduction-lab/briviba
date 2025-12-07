@@ -22,7 +22,7 @@
 
                         {{-- PREVIEW GAMBAR SAAT INI --}}
                         @if ($pakaian->image)
-                            <img src="{{ $item->image }}" class="w-20 h-20 object-cover rounded">
+                            <img src="{{ $pakaian->image }}" class="w-20 h-20 object-cover rounded">
 
 
                         @endif

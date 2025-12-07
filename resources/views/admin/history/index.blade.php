@@ -23,11 +23,25 @@
                     @foreach($histories as $item)
                     <tr>
                         <td class="border px-4 py-2">{{ $item->user->name }}</td>
-                        <td class="border px-4 py-2">{{ $item->pakaian->name }}</td>
-                        <td class="border px-4 py-2">{{ $item->stock->size }}</td>
+
+                        <td class="border px-4 py-2">
+                            {{ $item->stock?->pakaian?->name ?? 'Deleted Product' }}
+                        </td>
+
+                        <td class="border px-4 py-2">
+                            {{ $item->stock?->size ?? '-' }}
+                        </td>
+
                         <td class="border px-4 py-2">{{ $item->quantity }}</td>
-                        <td class="border px-4 py-2">Rp {{ number_format($item->total_price) }}</td>
-                        <td class="border px-4 py-2">{{ $item->created_at->format('d M Y') }}</td>
+
+                        <td class="border px-4 py-2">
+                            Rp {{ number_format($item->total_price) }}
+                        </td>
+
+                        <td class="border px-4 py-2">
+                            {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
+                        </td>
+
                     </tr>
                     @endforeach
                 </tbody>

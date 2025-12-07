@@ -59,7 +59,7 @@
 
 
                         <div class="mx-5">
-                            <h4 class="text-2xl font-semibold text-gray-700">{{ moneyFormat($histories) }}</h4>
+                            <h4 class="text-2xl font-semibold text-gray-700">{{ moneyFormat($total) }}</h4>
                             <div class="text-gray-500">Total Pembelian</div>
                         </div>
                     </div>

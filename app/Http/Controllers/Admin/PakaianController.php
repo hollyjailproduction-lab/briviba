@@ -111,6 +111,44 @@ class PakaianController extends Controller
         return redirect()->route('admin.pakaian.index')->with('success', 'Data Berhasil Diupdate!');
     }
 
+   public function gambarIndex()
+    {
+        $pakaians = Pakaian::paginate(10);
+        return view('admin.gambarproduk.index', compact('pakaians'));
+    }
+
+    public function gambarEdit($id)
+    {
+        $pakaian = Pakaian::findOrFail($id);
+        return view('admin.gambarproduk.edit', compact('pakaian'));
+    }
+
+    public function gambarUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'image_collar'   => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'image_material' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'image_back'     => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        ]);
+
+        $pakaian = Pakaian::findOrFail($id);
+
+        if ($request->hasFile('image_collar')) {
+            $pakaian->image_collar = $request->file('image_collar')->store('pakaian', 'public');
+        }
+        if ($request->hasFile('image_material')) {
+            $pakaian->image_material = $request->file('image_material')->store('pakaian', 'public');
+        }
+        if ($request->hasFile('image_back')) {
+            $pakaian->image_back = $request->file('image_back')->store('pakaian', 'public');
+        }
+
+        $pakaian->save();
+
+        return back()->with('success', 'Gambar berhasil diperbarui!');
+    }
+
+
     /**
      * Remove the specified resource from storage.
      */

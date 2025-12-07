@@ -30,7 +30,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended('user/homepage');
         }
 
         return back()->withErrors('Email or Password does not match, please check again')->withInput();

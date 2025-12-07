@@ -15,12 +15,13 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $histories = History::with(['user', 'pakaian', 'stock'])
+        $histories = History::with(['user', 'stock.pakaian'])
             ->orderBy('created_at', 'DESC')
             ->get();
 
         return view('admin.history.index', compact('histories'));
     }
+
 
     /**
      * Form tambah history (admin menambahkan transaksi)
@@ -39,7 +40,6 @@ class HistoryController extends Controller
     {
         $validated = $request->validate([
             'user_id'    => 'required|exists:users,id',
-            'pakaian_id' => 'required|exists:pakaians,id',
             'stock_id'   => 'required|exists:stocks,id',
             'quantity'   => 'required|integer|min:1',
         ]);
@@ -57,7 +57,6 @@ class HistoryController extends Controller
         // Simpan history
         History::create([
             'user_id'    => $request->user_id,
-            'pakaian_id' => $request->pakaian_id,
             'stock_id'   => $request->stock_id,
             'quantity'   => $request->quantity,
             'total_price'=> $totalPrice,
