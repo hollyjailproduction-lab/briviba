@@ -63,7 +63,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 --------------------WOI PENTING----------------------
 kalo mo jalanin, run ini dulu di terminal
+
 php artisan migrate
+
 php artisan storage:link
 
 kalo ada notif already exist yaudah
