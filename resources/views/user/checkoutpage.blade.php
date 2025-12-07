@@ -5,16 +5,16 @@
 <section style="flex:1; padding:60px 50px; background:#ffffff;">
     <div style="max-width:1200px; margin:0 auto; display:flex; gap:40px;">
 
-        {{-- ====================== --}}
+        
         {{-- LEFT: ITEMS + PAYMENT --}}
-        {{-- ====================== --}}
+        
         <div style="flex:2;">
 
             <h2 style="font-size:28px; color:#555; margin-bottom:30px;">
                 Checkout
             </h2>
 
-            {{-- ===== INFORMASI PESANAN ===== --}}
+            {{--  INFORMASI PESANAN  --}}
             @php $grandTotal = 0; @endphp
 
             @foreach($items as $c)
@@ -46,9 +46,7 @@
             </div>
             @endforeach
 
-            {{-- =========================== --}}
             {{-- METODE PEMBAYARAN --}}
-            {{-- =========================== --}}
             <h3 style="font-size:20px; color:#333; margin:30px 0 10px;">Metode Pembayaran</h3>
 
             <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:15px;">
@@ -94,9 +92,9 @@
 
         </div>
 
-        {{-- ====================== --}}
+        
         {{-- RIGHT: PAYMENT SUMMARY --}}
-        {{-- ====================== --}}
+        
         <div style="
             flex:1; background:#fff; padding:25px; border:1px solid #ddd;
             border-radius:8px; height:max-content;

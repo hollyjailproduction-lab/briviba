@@ -42,9 +42,9 @@
 <section style="flex: 1; padding: 60px 50px;">
     <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
 
-        {{-- ========================== --}}
+        
         {{-- LEFT (IMAGE GRID) --}}
-        {{-- ========================== --}}
+        
         <div>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
             @foreach ($images as $img)
@@ -56,9 +56,9 @@
 
         </div>
 
-        {{-- ========================== --}}
+        
         {{-- RIGHT (INFO) --}}
-        {{-- ========================== --}}
+        
         <div style="display: flex; flex-direction: column;">
 
             {{-- NAME --}}
@@ -165,9 +165,9 @@
     </div>
 </section>
 
-{{-- ========================== --}}
+
 {{-- JAVASCRIPT --}}
-{{-- ========================== --}}
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
