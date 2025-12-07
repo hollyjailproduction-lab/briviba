@@ -30,9 +30,10 @@ class DashboardController extends Controller
 
 
         //donations
-        $histories = History::count();
+        $total = History::sum('total_price');
 
 
-        return view('admin.dashboard.index', compact('pakaians', 'stocks', 'histories'));
+
+        return view('admin.dashboard.index', compact('pakaians', 'stocks', 'total'));
     }
 }

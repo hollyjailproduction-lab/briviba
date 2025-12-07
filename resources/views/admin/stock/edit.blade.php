@@ -10,7 +10,8 @@
 
             {{-- Info pakaian --}}
             <div class="mb-6 flex items-center space-x-4">
-                <img src="{{ $stock->pakaian->image }}" class="w-24 h-24 object-cover rounded shadow">
+                <img src="{{ asset($stock->pakaian->image) }}" class="w-24 h-24 object-cover rounded shadow">
+
                 <div>
                     <h3 class="font-semibold text-lg">{{ $stock->pakaian->name }}</h3>
                     <p class="text-gray-600">Ukuran: {{ $stock->size }}</p>

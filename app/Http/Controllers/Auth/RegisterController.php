@@ -63,6 +63,6 @@ class RegisterController extends Controller
         // Auto login setelah register
         Auth::login($user);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('user.homepage');
     }
 }
