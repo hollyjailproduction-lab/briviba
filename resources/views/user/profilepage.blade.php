@@ -14,9 +14,9 @@
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;">
 
-            {{-- ========================== --}}
+            
             {{--   ORDERS / HISTORY         --}}
-            {{-- ========================== --}}
+            
             <div style="background: #fff; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.1);">
 
                 <h3 style="font-size: 16px; padding: 25px 30px 20px 30px; margin:0; font-weight:600; color:#333;">
@@ -39,41 +39,64 @@
                 @else
                     <div style="padding: 25px 30px;">
                         @foreach($histories as $h)
-                            <div style="border-bottom: 1px solid #eee; padding-bottom:15px; margin-bottom:15px;">
 
-                                {{-- ITEM NAME --}}
-                                <strong style="font-size: 15px; color:#333;">
-                                    {{ $h->stock->pakaian->name }}
-                                </strong><br>
+                            <div style="
+                                display:flex; 
+                                gap:15px; 
+                                align-items:center; 
+                                border-bottom:1px solid #eee; 
+                                padding-bottom:15px; 
+                                margin-bottom:15px;
+                            ">
 
-                                {{-- SIZE --}}
-                                <span style="font-size: 14px; color:#666;">
-                                    Size: {{ $h->stock->size }}
-                                </span><br>
+                                {{-- IMAGE THUMBNAIL --}}
+                                <div style="
+                                    width:70px; 
+                                    height:70px; 
+                                    border:1px solid #ddd; 
+                                    border-radius:4px; 
+                                    overflow:hidden;
+                                ">
+                                    <img src="{{ asset($h->stock->pakaian->image) }}" 
+                                        style="width:100%; height:100%; object-fit:cover;">
+                                </div>
 
-                                {{-- QTY --}}
-                                <span style="font-size: 14px; color:#666;">
-                                    Quantity: {{ $h->quantity }}
-                                </span><br>
+                                {{-- TEXT INFO --}}
+                                <div style="flex:1;">
 
-                                {{-- TOTAL --}}
-                                <span style="font-size: 14px; font-weight:600; color:#333;">
-                                    Total: IDR {{ number_format($h->total_price, 0, ',', '.') }}
-                                </span><br>
+                                    <strong style="font-size: 15px; color:#333;">
+                                        {{ $h->stock->pakaian->name }}
+                                    </strong><br>
 
-                                {{-- DATE --}}
-                                <small style="font-size: 12px; color:#777;">
-                                    {{ $h->created_at->format('d M Y') }}
-                                </small>
+                                    <span style="font-size: 14px; color:#666;">
+                                        Size: {{ $h->stock->size }}
+                                    </span><br>
+
+                                    <span style="font-size: 14px; color:#666;">
+                                        Quantity: {{ $h->quantity }}
+                                    </span><br>
+
+                                    <span style="font-size: 14px; font-weight:600; color:#333;">
+                                        Total: IDR {{ number_format($h->total_price, 0, ',', '.') }}
+                                    </span><br>
+
+                                    <small style="font-size: 12px; color:#777;">
+                                        {{ $h->created_at->format('d M Y') }}
+                                    </small>
+
+                                </div>
+
                             </div>
+
                         @endforeach
                     </div>
+
                 @endif
             </div>
 
-            {{-- ========================== --}}
+            
             {{-- PRIMARY ADDRESS            --}}
-            {{-- ========================== --}}
+            
             <div style="background: #fff; padding: 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
                 <h3 style="font-size: 16px; color: #333; font-weight: 600; padding: 25px 30px 20px 30px; margin: 0;">
                     Primary address
